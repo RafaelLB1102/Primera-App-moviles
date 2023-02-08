@@ -8,7 +8,6 @@ function App(): JSX.Element {
   const [modalVisible2, setModalVisible2] = useState(false);
   const [modalVisibleForm, setModalVisibleForm] = useState(false);
 
-  console.log(modalVisible2)
 
 
   return (
@@ -29,16 +28,9 @@ function App(): JSX.Element {
 
       {/* Sección botón2 */}
       <Pressable
-        onPress={() => setTimeout(() => { setModalVisible2(true) }, 2000)}
-        style={styles.btnStyleRed}>
-        <Text style={styles.btnTxtStyle}>iniciar sesión</Text>
-      </Pressable>
-
-      {/* Sección botón2 */}
-      <Pressable
         onPress={() => setModalVisibleForm(true)}
         style={styles.btnStyleRed}>
-        <Text style={styles.btnTxtStyle}>iniciar sesión</Text>
+        <Text style={styles.btnTxtStyle}>Mostrar </Text>
       </Pressable>
       <Form modalVisibleForm={modalVisibleForm}></Form>
 
@@ -57,10 +49,6 @@ function App(): JSX.Element {
         />
       </Modal>
 
-      {/* Modal2 */}
-      <Modal animationType='fade' visible={modalVisible2}>
-        <Text>Mostrar por 3 seg</Text>
-      </Modal>
     </View>
   );
 }

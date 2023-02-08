@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import {Modal, SafeAreaView, StyleSheet, Text, ScrollView, View, TextInput} from 'react-native'
+import DatePicker from "react-native-modern-datepicker"
+
 
 export const Form = ({modalVisibleForm}) => {
     const {userName,SetUserName} = useState("")
     const {email,SetEmail} = useState("")
+    const {selectedDate, SetSelectedDate} = useState("")
     const {age,SetAge} = useState(0)
 
 
@@ -30,11 +33,11 @@ export const Form = ({modalVisibleForm}) => {
                   value = {age}
                   onChange = {SetAge}>
                 </TextInput>
+
+                <DatePicker
+                    onSelectedChange={date => SetSelectedDate(date)}
+                />
               </View>
-
-
-
-
           </ScrollView>
         </SafeAreaView>
       </Modal>
