@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { Text, StyleSheet, View, TextInput, Pressable, Modal } from 'react-native';
 import { Form } from './src/components/Form';
+import { Form2 } from './src/components/Form2';
 
 function App(): JSX.Element {
   const [text, onChangeText] = useState('Text');
   const [modalVisible, setModalVisible] = useState(false);
   const [modalVisible2, setModalVisible2] = useState(false);
   const [modalVisibleForm, setModalVisibleForm] = useState(false);
+  const [modalRegistro, setModalRegistro] = useState(false);
 
 
 
@@ -33,6 +35,14 @@ function App(): JSX.Element {
         <Text style={styles.btnTxtStyle}>Mostrar </Text>
       </Pressable>
       <Form modalVisibleForm={modalVisibleForm}></Form>
+
+      <Pressable
+        onPress={() => setModalRegistro(true)} style={styles.btnStyle}>
+        <Text style={styles.btnTxtStyle}>Registrarme</Text>
+      </Pressable>
+      <Form2 modalRegistro={modalRegistro} setModalRegistro= {setModalRegistro}></Form2>
+
+
 
       {/* Sección ventana modal */}
       <Modal animationType="slide" visible={modalVisible}>

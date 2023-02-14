@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { Modal, SafeAreaView, StyleSheet, Text, ScrollView, View, TextInput,Pressable } from 'react-native'
-import DatePicker from "react-native-modern-datepicker"
+//import DatePicker from "react-native-modern-datepicker"
+import DatePicker from 'react-native-date-picker'
 import RadioButtonRN from "radio-buttons-react-native"
 
 export const Form = ({ modalVisibleForm }) => {
   const { userName, SetUserName } = useState("")
   const { userLastName, SetuserLastName } = useState("")
   const { email, SetEmail } = useState("")
-  const { selectedDate, SetSelectedDate } = useState("")
+  const { selectedDate, SetSelectedDate } = useState(new Date())
   const { age, SetAge } = useState(0)
   const data = [
     {
@@ -19,7 +20,7 @@ export const Form = ({ modalVisibleForm }) => {
   ];
 
   return (
-    <Modal animationType="slide" visible={modalVisibleForm}>
+    <Modal animationType="slide" visible={modalVisibleForm} >
       <SafeAreaView style={styles.content}>
         <Text style={styles.title}>Formulario de registro</Text>
         <ScrollView>
@@ -61,6 +62,7 @@ export const Form = ({ modalVisibleForm }) => {
             <DatePicker
               onSelectedChange={selectedDate => SetSelectedDate(selectedDate)}
               value={selectedDate}
+              date = {selectedDate}
             />
 
             <Pressable
