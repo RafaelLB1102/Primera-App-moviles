@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Modal, SafeAreaView, StyleSheet, Text, ScrollView, View, TextInput,Pressable } from 'react-native'
-//import DatePicker from "react-native-modern-datepicker"
-import DatePicker from 'react-native-date-picker'
+import DatePicker from "react-native-modern-datepicker"
 import RadioButtonRN from "radio-buttons-react-native"
 
 export const Form = ({ modalVisibleForm }) => {

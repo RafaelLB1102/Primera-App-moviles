@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   Alert,
   Modal,
@@ -11,25 +11,39 @@ import {
 } from 'react-native';
 import DatePicker from 'react-native-date-picker';
 
-export const Form2 = ({modalRegistro, setModalRegistro}) => {
+export const Form2 = ({ modalRegistro, setModalRegistro }) => {
+  const users = [
+    {
+      userName: "Rafael",
+      userEmail: "a@a.com",
+      birthday: "2002-02-11"
+    },
+    {
+      userName: "Rafael",
+      userEmail: "b@b.com",
+      birthday: "2002-02-11"
+    },
+  ]
   const [userEmail, setUserEmail] = useState('');
   const [userName, setUserName] = useState('');
   const [birthday, setBirthday] = useState(new Date());
   const handlerNewUser = () => {
     console.log('Adding new user');
     /* Validamos si los campos del formulario estan sin diligenciar, vacíos */
-    if ([userName, birthday].includes('')) {
-      console.log('Campos sin diligenciar');
-      Alert.alert('Alert Title', 'My Alert Msg', [
-        {
-          text: 'Cancel',
-          onPress: () => console.log('Cancel Pressed'),
-          style: 'cancel',
-        },
-        {text: 'OK', onPress: () => console.log('OK Pressed')},
+    if ([userName, birthday, userEmail].includes('')) {
+      Alert.alert('Error', 'Campos sin diligenciar', [
+        { text: 'Aceptar', onPress: () => console.log('OK Pressed') },
       ]);
+      return;
     }
-    const new_user = [userName, birthday];
+    /* Validar si es un nuevo usuario o es uno existente */
+    const new_user = { userName, birthday, userEmail };
+    if (userEmail) {
+      let userWithEmail = users.find(user => user.userEmail == userEmail)
+      
+      userWithEmail.userName = new_user.userName
+      userWithEmail.birthday = new_user.birthday
+    }
     console.log('Message 1', new_user);
 
     setModalRegistro(!modalRegistro);
