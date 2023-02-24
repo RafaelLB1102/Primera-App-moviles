@@ -10,6 +10,7 @@ import {
   Pressable,
 } from 'react-native';
 import DatePicker from 'react-native-date-picker';
+import RadioButtonRN from "radio-buttons-react-native"
 
 export const Form2 = ({ modalRegistro, setModalRegistro }) => {
   const users = [
@@ -52,6 +53,15 @@ export const Form2 = ({ modalRegistro, setModalRegistro }) => {
     setBirthday(new Date());
   };
 
+  const data = [
+    {
+      label: 'Masculino'
+    },
+    {
+      label: 'Femenino'
+    }
+  ];
+
   return (
     <Modal animationType="slide" visible={modalRegistro}>
       <SafeAreaView style={styles.container}>
@@ -80,7 +90,13 @@ export const Form2 = ({ modalRegistro, setModalRegistro }) => {
             minDate="1950-01-01"
             maxDate="2016-06-01"
             onDateChange={date => setBirthday(date)}></DatePicker>
-          {/* Botón para aceptar envio de datos del formulario */}
+
+            <RadioButtonRN
+              data={data}
+              box={false}
+              selectedBtn={(e) => console.log(e)}
+            />
+          
           <Pressable style={styles.btn_user_add} onPress={handlerNewUser}>
             <Text style={styles.text_btn_user_add}>Acept</Text>
           </Pressable>

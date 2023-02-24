@@ -1,49 +1,41 @@
 import React, { useState } from 'react';
-import { Text, StyleSheet, View, TextInput, Pressable, Modal } from 'react-native';
+import { Text, StyleSheet, View, TextInput, Pressable, Modal, FlatList } from 'react-native';
 import { Form } from './src/components/Form';
 import { Form2 } from './src/components/Form2';
+import { SuperHero } from './src/components/SuperHero';
+import { User } from './src/components/User';
 
 function App(): JSX.Element {
   const [text, onChangeText] = useState('Text');
   const [modalVisible, setModalVisible] = useState(false);
   const [modalVisible2, setModalVisible2] = useState(false);
-  const [modalVisibleForm, setModalVisibleForm] = useState(false);
+  const [modalSuperHeroe, setModalSuperHeroe] = useState(false);
   const [modalRegistro, setModalRegistro] = useState(false);
-
+  const [users, setUsers] = useState([]);
 
 
   return (
     <View style={styles.container}>
-      <Text style={styles.baseText}>Hello</Text>
-      <TextInput
-        style={styles.input}
-        onChangeText={onChangeText}
-        value={text}
-      />
-      {/* Sección botón1 */}
+      <Text style={styles.baseText}>Bienvenido</Text>
       <Pressable
-        onPress={() => setModalVisible(!modalVisible)}
-        onLongPress={() => console.log('Please realese me')}
+        onPress={() => setTimeout(() => {setModalVisible2(true), 2000})}
         style={styles.btnStyle}>
         <Text style={styles.btnTxtStyle}>iniciar sesión</Text>
       </Pressable>
-
-      {/* Sección botón2 */}
-      <Pressable
-        onPress={() => setModalVisibleForm(true)}
-        style={styles.btnStyleRed}>
-        <Text style={styles.btnTxtStyle}>Mostrar </Text>
-      </Pressable>
-      <Form modalVisibleForm={modalVisibleForm}></Form>
 
       <Pressable
         onPress={() => setModalRegistro(true)} style={styles.btnStyle}>
         <Text style={styles.btnTxtStyle}>Registrarme</Text>
       </Pressable>
-      <Form2 modalRegistro={modalRegistro} setModalRegistro= {setModalRegistro}></Form2>
-
-
-
+      <Form2 modalRegistro={modalRegistro} setModalRegistro= {setModalRegistro} users = {users}></Form2>
+      {
+        users.length === 0 ? 
+          <Text>No hay usuarios aun</Text> 
+          :<FlatList data = {users} renderItem = {({item}) => {
+            return (<User user_item={user_item}></User>)
+          }}/>
+     }
+          
       {/* Sección ventana modal */}
       <Modal animationType="slide" visible={modalVisible}>
         <Text>Ventana modal</Text>
@@ -59,13 +51,16 @@ function App(): JSX.Element {
         />
       </Modal>
 
+      <Pressable
+        onPress={() => setModalSuperHeroe(true)} style={styles.btnStyle}>
+        <Text style={styles.btnTxtStyle}>SuperHeroe</Text>
+      </Pressable>
+      <SuperHero modalSuperHero={modalSuperHeroe} setModalSuperHero= {setModalSuperHeroe}></SuperHero>
+     
     </View>
   );
-}
+};
 
-const onPressFunction = () => {
-  console.log('Click');
-}
 
 const styles = StyleSheet.create(
   {
