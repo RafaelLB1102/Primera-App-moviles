@@ -62,6 +62,21 @@ export const Form2 = ({ modalRegistro, setModalRegistro }) => {
     }
   ];
 
+  const capturaValorNombre = event => {
+    console.log("nombre "+event)
+    setUserName(event)
+  }
+
+  const capturaValorEmail = event => {
+    console.log("email "+event)
+    setUserEmail(event)
+  }
+
+  const capturaValorFecha = event => {
+    console.log("fecha " + event)
+    setBirthday(event)
+  }
+
   return (
     <Modal animationType="slide" visible={modalRegistro}>
       <SafeAreaView style={styles.container}>
@@ -79,8 +94,8 @@ export const Form2 = ({ modalRegistro, setModalRegistro }) => {
             <Text style={styles.text_close_window}>X</Text>
           </Pressable>
           {/* Inicio del formulario */}
-          <TextInput onChangeText={setUserName} value={userName} placeholder="Nombre"></TextInput>
-          <TextInput onChangeText={setUserEmail} value={userEmail} placeholder="Correo"></TextInput>
+          <TextInput onChangeText={capturaValorNombre} value={userName} placeholder="Nombre"></TextInput>
+          <TextInput onChangeText={capturaValorEmail} value={userEmail} placeholder="Correo"></TextInput>
           <DatePicker
             style={styles.content_date}
             date={birthday}
@@ -89,7 +104,7 @@ export const Form2 = ({ modalRegistro, setModalRegistro }) => {
             format="YYYY-MM-DD"
             minDate="1950-01-01"
             maxDate="2016-06-01"
-            onDateChange={date => setBirthday(date)}></DatePicker>
+            onDateChange={capturaValorFecha}></DatePicker>
 
             <RadioButtonRN
               data={data}

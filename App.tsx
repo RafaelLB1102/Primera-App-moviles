@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Text, StyleSheet, View, TextInput, Pressable, Modal, FlatList } from 'react-native';
 import { Form } from './src/components/Form';
 import { Form2 } from './src/components/Form2';
+import { FormPractice } from './src/components/FormPractice';
 import { SuperHero } from './src/components/SuperHero';
 import { User } from './src/components/User';
 
@@ -12,6 +13,7 @@ function App(): JSX.Element {
   const [modalSuperHeroe, setModalSuperHeroe] = useState(false);
   const [modalRegistro, setModalRegistro] = useState(false);
   const [users, setUsers] = useState([]);
+  const [form,setForm] = useState(false)
 
 
   return (
@@ -57,6 +59,12 @@ function App(): JSX.Element {
       </Pressable>
       <SuperHero modalSuperHero={modalSuperHeroe} setModalSuperHero= {setModalSuperHeroe}></SuperHero>
      
+      <Pressable
+        onPress={() => setForm(true)} style={styles.btnStyle}>
+        <Text style={styles.btnTxtStyle}>Form</Text>
+      </Pressable>
+      <FormPractice modal={form} setModal={setForm}></FormPractice>
+
     </View>
   );
 };
@@ -65,7 +73,6 @@ function App(): JSX.Element {
 const styles = StyleSheet.create(
   {
     container: {
-      flex: 1,
       justifyContent: 'center',
       marginHorizontal: 16,
     },
