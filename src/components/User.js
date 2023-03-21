@@ -12,24 +12,7 @@ export const User = (
   const { userName, userEmail, birthday } = user_item;
   
   return (
-    <Pressable
-      onLongPress={() => {
-        setModalUser(true);
-        setUser(user_item);
-      }}
-    >
-      <View style={styles.content}>
-        <Text style={styles.label}>Usuario:</Text>
-        <Text tyle={styles.text}>{userName}</Text>
-        <Text tyle={styles.text}>{userEmail}</Text>
-        <Text tyle={styles.date_b}>{birthday}</Text>
-      </View>
-      <Pressable style={[styles.btn, styles.btnEdit]} onLongPress={() => {
-        set
-      }} >
-
-      </Pressable>
-    </Pressable>
+    <Text>HOLa</Text>
   );
 };
 
