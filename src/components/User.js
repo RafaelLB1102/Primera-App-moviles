@@ -17,12 +17,6 @@ export const User = (
 };
 
 const styles = StyleSheet.create({
-    content: {
-      backgroundColor: '#FFF',
-      padding: 20,
-      borderBottomColor: '#94a3B8',
-      borderBottomWidth: 1,
-    },
     label: {
       color: '#374151',
       textTransform: 'uppercase',
@@ -49,11 +43,5 @@ const styles = StyleSheet.create({
     },
     btnDelete : {
         backgroundColor : "#EF4444"
-    },
-    btnText : {
-        textTransform : 'uppercase',
-        fontWeight : '700',
-        fontSize : 12,
-        color : '#FFF'
     }
-  });
+ });
