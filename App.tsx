@@ -29,14 +29,8 @@ function App(): JSX.Element {
         onPress={() => setModalRegistro(true)} style={styles.btnStyle}>
         <Text style={styles.btnTxtStyle}>Registrarme</Text>
       </Pressable>
-      <Form2 modalRegistro={modalRegistro} setModalRegistro= {setModalRegistro} users = {users}></Form2>
-      {
-        users.length === 0 ? 
-          <Text>No hay usuarios aun</Text> 
-          :<FlatList data = {users} renderItem = {({item}) => {
-            return (<User user_item={user_item}></User>)
-          }}/>
-     }
+      
+
           
       {/* Sección ventana modal */}
       <Modal animationType="slide" visible={modalVisible}>
